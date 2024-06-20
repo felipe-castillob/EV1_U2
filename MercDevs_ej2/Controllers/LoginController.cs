@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Threading.Tasks;
+using BCrypt.Net;
 
 namespace MercDevs_ej2.Controllers
 {
@@ -39,7 +40,7 @@ namespace MercDevs_ej2.Controllers
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Correo == usuarioLogin.Correo);
 
             // Verifica si el usuario existe y si la contraseña es correcta
-            if (usuario != null && usuario.VerifyPassword(usuarioLogin.Password))
+            if (usuario != null && BCrypt.Net.BCrypt.Verify(usuarioLogin.Password, usuario.Password))
             {
                 // Para datos de usuario login
                 List<Claim> claims = new List<Claim>()

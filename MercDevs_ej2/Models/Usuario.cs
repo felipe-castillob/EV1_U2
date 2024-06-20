@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using BCrypt.Net;
 
 namespace MercDevs_ej2.Models;
 
@@ -17,16 +16,4 @@ public partial class Usuario
     public string Password { get; set; } = null!;
 
     public virtual ICollection<Servicio> Servicios { get; set; } = new List<Servicio>();
-
-    // Método para establecer la contraseña encriptada
-    public void EncriptarPassword(string password)
-    {
-        Password = BCrypt.Net.BCrypt.HashPassword(password);
-    }
-
-    // Método para verificar la contraseña
-    public bool VerifyPassword(string password)
-    {
-        return BCrypt.Net.BCrypt.Verify(password, Password);
-    }
 }

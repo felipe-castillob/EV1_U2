@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MercDevs_ej2.Models;
+using BCrypt.Net;
 
 namespace MercDevs_ej2.Controllers
 {
@@ -57,7 +58,7 @@ namespace MercDevs_ej2.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.EncriptarPassword(usuario.Password); // Encripta la contraseña
+                usuario.Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password); // Encripta la contraseña
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,7 +101,7 @@ namespace MercDevs_ej2.Controllers
                     // Encripta la contraseña solo si se ha cambiado
                     if (!string.IsNullOrEmpty(usuario.Password))
                     {
-                        usuario.EncriptarPassword(usuario.Password);
+                        usuario.Password = BCrypt.Net.BCrypt.HashPassword(usuario.Password);
                     }
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
