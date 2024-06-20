@@ -33,6 +33,8 @@ public partial class Recepcionequipo
 
     public string? Grafico { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual Cliente IdClienteNavigation { get; set; } = null!;
 
     public virtual Servicio IdServicioNavigation { get; set; } = null!;

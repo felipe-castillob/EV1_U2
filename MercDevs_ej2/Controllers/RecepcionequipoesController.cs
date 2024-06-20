@@ -92,7 +92,7 @@ namespace MercDevs_ej2.Controllers
 
 
 
-        public async Task<IActionResult> Create([Bind("Id,IdCliente,IdServicio,Fecha,TipoPc,Accesorio,MarcaPc,ModeloPc,Nserie,CapacidadRam,TipoAlmacenamiento,CapacidadAlmacenamiento,TipoGpu,Grafico")] Recepcionequipo recepcionequipo)
+        public async Task<IActionResult> Create([Bind("Id,IdCliente,IdServicio,Fecha,TipoPc,Accesorio,MarcaPc,ModeloPc,Nserie,CapacidadRam,TipoAlmacenamiento,CapacidadAlmacenamiento,TipoGpu,Grafico,Estado")] Recepcionequipo recepcionequipo)
         {
             // primero quise hacer un if para validar los dato propios de la tabla, pero era muy largo
             //le pregunte a gpt-san como podia factorizar mejor el codigo y me explico que podia hacer un diccionario y recorrerlo
@@ -112,7 +112,8 @@ namespace MercDevs_ej2.Controllers
         { nameof(recepcionequipo.TipoAlmacenamiento), recepcionequipo.TipoAlmacenamiento },
         { nameof(recepcionequipo.CapacidadAlmacenamiento), recepcionequipo.CapacidadAlmacenamiento },
         { nameof(recepcionequipo.TipoGpu), recepcionequipo.TipoGpu },
-        { nameof(recepcionequipo.Grafico), recepcionequipo.Grafico }
+        { nameof(recepcionequipo.Grafico), recepcionequipo.Grafico },
+        { nameof(recepcionequipo.Estado), recepcionequipo.Estado }
     };
 
             // Verificar si alguna de las propiedades es nula o en el caso de int, si es igual a 0
@@ -163,7 +164,7 @@ namespace MercDevs_ej2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,IdCliente,IdServicio,Fecha,TipoPc,Accesorio,MarcaPc,ModeloPc," +
-"Nserie,CapacidadRam,TipoAlmacenamiento,CapacidadAlmacenamiento,TipoGpu,Grafico")] Recepcionequipo recepcionequipo)
+"Nserie,CapacidadRam,TipoAlmacenamiento,CapacidadAlmacenamiento,TipoGpu,Grafico,Estado")] Recepcionequipo recepcionequipo)
         {
             if (id != recepcionequipo.Id)
             {
@@ -253,6 +254,38 @@ namespace MercDevs_ej2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // POST: Recepcionequipoes/Finalizar/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Finalizar(int id)
+        {
+            var recepcionEquipo = await _context.Recepcionequipos.FindAsync(id);
+            if (recepcionEquipo == null)
+            {
+                return NotFound();
+            }
+
+            recepcionEquipo.Estado = "finalizar";
+
+            try
+            {
+                _context.Update(recepcionEquipo);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RecepcionequipoExists(recepcionEquipo.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

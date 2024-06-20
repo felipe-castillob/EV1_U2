@@ -12,8 +12,12 @@
     <table class="table">
         <thead td style="white-space: nowrap;">
             <tr>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.TipoPc)
@@ -57,6 +61,9 @@
                 <tr>
                     <td style="white-space: nowrap;">
                         @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TipoPc)

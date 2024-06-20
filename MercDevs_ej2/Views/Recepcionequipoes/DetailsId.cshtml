@@ -30,7 +30,7 @@
             Estado
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdClienteNavigation.Estado)
+            @Html.DisplayFor(model => model.Estado)
         </dd>
         <hr style="background-color:black" />
 
@@ -144,5 +144,7 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id"><button class="btn btn-warning">editar</button></a>
     <a asp-action="Index"><button class="btn btn-secondary">volver a listado</button></a>
-    <a asp-action="Index"><button class="btn btn-info">Recepcion del Equipo</button></a>
+    <form method="post" asp-action="Finalizar" asp-route-id="@Model?.Id">
+        <button type="submit" class="btn btn-info">Finalizar Recepción</button>
+    </form>
 </div>
