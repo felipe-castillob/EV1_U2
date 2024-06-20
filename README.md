@@ -1,3 +1,10 @@
+Si crea un usuario manualmente en la base de datos con esta contraña hasheada (sin hash seria "test")
+$2a$11$bL/hbgVmAwxXkdRwgjDebOct1/cxrLQyTYI7fm202QZyv5YdzPmHm
+
+seria "test"
+
+
+
 actualizacion:
 todo traducido y visual listo
 -falta arreglar funcion update del controlador Recepcion para poder actualizar los datos (INVESTIGAR)
