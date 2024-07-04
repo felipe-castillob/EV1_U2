@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace MercDevs_ej2.Models;
 
 public partial class Datosfichatecnica
 {
-    [Key]
     public int IdDatosFichaTecnica { get; set; }
 
     public DateTime? FechaInicio { get; set; }
