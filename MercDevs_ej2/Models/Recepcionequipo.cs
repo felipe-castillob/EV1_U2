@@ -33,7 +33,7 @@ public partial class Recepcionequipo
 
     public string? Grafico { get; set; }
 
-    public string? Estado { get; set; }
+    public virtual ICollection<Datosfichatecnica> Datosfichatecnicas { get; set; } = new List<Datosfichatecnica>();
 
     public virtual Cliente IdClienteNavigation { get; set; } = null!;
 

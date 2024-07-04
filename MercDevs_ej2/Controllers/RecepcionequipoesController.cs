@@ -113,7 +113,7 @@ namespace MercDevs_ej2.Controllers
         { nameof(recepcionequipo.CapacidadAlmacenamiento), recepcionequipo.CapacidadAlmacenamiento },
         { nameof(recepcionequipo.TipoGpu), recepcionequipo.TipoGpu },
         { nameof(recepcionequipo.Grafico), recepcionequipo.Grafico },
-        { nameof(recepcionequipo.Estado), recepcionequipo.Estado }
+        //{ nameof(recepcionequipo.Estado), recepcionequipo.Estado }
     };
 
             // Verificar si alguna de las propiedades es nula o en el caso de int, si es igual a 0
@@ -255,7 +255,7 @@ namespace MercDevs_ej2.Controllers
         }
 
         // POST: Recepcionequipoes/Finalizar/5
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Finalizar(int id)
         {
@@ -285,7 +285,7 @@ namespace MercDevs_ej2.Controllers
             }
 
             return RedirectToAction(nameof(Index));
-        }
+        }*/
 
     }
 }
