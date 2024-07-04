@@ -1,83 +1,197 @@
-﻿@model IEnumerable<MercDevs_ej2.Models.Datosfichatecnica>
+﻿@model MercDevs_ej2.Models.Datosfichatecnica
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ficha Técnica";
 }
 
-<h1>Index</h1>
+<div class="text-center">
+    <h1>Ficha Técnica</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaFinalizacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PobservacionesRecomendaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Soinstalado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SuiteOfficeInstalada)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LectorPdfinstalado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NavegadorWebInstalado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AntivirusInstalado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecepcionEquipo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFinalizacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PobservacionesRecomendaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soinstalado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuiteOfficeInstalada)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LectorPdfinstalado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NavegadorWebInstalado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AntivirusInstalado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecepcionEquipo.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDatosFichaTecnica">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDatosFichaTecnica">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDatosFichaTecnica">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row mt-2 justify-content-end">
+    <div class="col-sm-3">
+        <label>ID:</label>
+        <span>@Model.IdDatosFichaTecnica</span>
+        <br />
+        <label>Fecha:</label>
+        <span>@Model.FechaInicio?.ToString("dd/MM/yyyy")</span>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                Datos del Usuario
+            </div>
+            <div class="container">
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Nombre:</label>
+                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Nombre</span>
+                    </div>
+                    <div class="col border-end">
+                        <label class="control-label">Apellido:</label>
+                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Apellido</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Celular:</label>
+                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Telefono</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 border-end">
+                        <label class="control-label">Correo:</label>
+                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Correo</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Dirección:</label>
+                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Direccion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                Observaciones del Usuario
+            </div>
+            <div class="container">
+                <div class="row border-bottom">
+                    <div class="col-1 border-end">
+                        <label class="control-label">Nº</label>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-1 border-end">
+                        <label class="control-label">@Model.PobservacionesRecomendaciones</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                Datos del Hardware
+            </div>
+            <div class="container">
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Tipo:</label>
+                        <span>@Model.RecepcionEquipo.TipoPc</span>
+                    </div>
+                    <div class="col border-end">
+                        <label class="control-label">Accesorios:</label>
+                        <span>@Model.RecepcionEquipo.Accesorio</span>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Marca:</label>
+                        <span>@Model.RecepcionEquipo.MarcaPc</span>
+                    </div>
+                    <div class="col border-end">
+                        <label class="control-label">Modelo:</label>
+                        <span>@Model.RecepcionEquipo.ModeloPc</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">S/N:</label>
+                        <span>@Model.RecepcionEquipo.Nserie</span>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">CPU:</label>
+                        <span>. . .</span>
+                    </div>
+                    <div class="col border-end">
+                        <label class="control-label">Velocidad:</label>
+                        <span>. . .</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">RAM:</label>
+                        <span>@Model.RecepcionEquipo.CapacidadRam</span>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Almacenamiento:</label>
+                        <span>@Model.RecepcionEquipo.TipoAlmacenamiento</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Capacidad:</label>
+                        <span>@Model.RecepcionEquipo.CapacidadAlmacenamiento</span>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">GPU:</label>
+                        <span>@Model.RecepcionEquipo.TipoGpu</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Tarjeta Madre:</label>
+                        <span>. . .</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                Datos del Software
+            </div>
+            <div class="container">
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Sistema Operativo:</label>
+                        <span>@Model.Soinstalado</span>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col border-end">
+                        <label class="control-label">Software Instalado:</label>
+                        <span>@Model.SuiteOfficeInstalada</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Inconvenientes:</label>
+                        <span>. . .</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                Observaciones o Recomendaciones
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col border-end">
+                        <label class="control-label">Firma Técnico Encargado:</label>
+                        <span>____________________</span>
+                    </div>
+                    <div class="col">
+                        <label class="control-label">Firma Cliente:</label>
+                        <span>____________________</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
