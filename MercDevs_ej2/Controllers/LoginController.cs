@@ -13,9 +13,9 @@ namespace MercDevs_ej2.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly MercydevsEjercicio2Context _context;
+        private readonly MercyDeveloperContext _context;
 
-        public LoginController(MercydevsEjercicio2Context context)
+        public LoginController(MercyDeveloperContext context)
         {
             _context = context;
         }

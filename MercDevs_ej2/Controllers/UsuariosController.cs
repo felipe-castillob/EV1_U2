@@ -12,9 +12,9 @@ namespace MercDevs_ej2.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly MercydevsEjercicio2Context _context;
+        private readonly MercyDeveloperContext _context;
 
-        public UsuariosController(MercydevsEjercicio2Context context)
+        public UsuariosController(MercyDeveloperContext context)
         {
             _context = context;
         }

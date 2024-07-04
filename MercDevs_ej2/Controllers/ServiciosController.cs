@@ -11,9 +11,9 @@ namespace MercDevs_ej2.Controllers
 {
     public class ServiciosController : Controller
     {
-        private readonly MercydevsEjercicio2Context _context;
+        private readonly MercyDeveloperContext _context;
 
-        public ServiciosController(MercydevsEjercicio2Context context)
+        public ServiciosController(MercyDeveloperContext context)
         {
             _context = context;
         }

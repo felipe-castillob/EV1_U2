@@ -105,6 +105,7 @@
             <td>
 
                 <div class="d-flex justify-content-around" style="gap:10px">
+                    @Html.ActionLink("Ver Ficha Técnica", "Index", "Datosfichatecnicas", new { id = item.Id }, null)
                     <a asp-action="Edit" asp-route-id="@item.Id">
                         <button type="button" class="btn btn-primary" style="width:100%">Editar</button></a>
 
@@ -113,7 +114,7 @@
 
                     <a asp-action="Delete" asp-route-id="@item.Id">
                             <button type="button" class="btn btn-danger" style="width:100%">Borrar</button>
-                        </a>
+                    </a>
                     </div>
             </td>
         </tr>

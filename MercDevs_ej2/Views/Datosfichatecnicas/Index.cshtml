@@ -14,7 +14,7 @@
         <span>@Model.IdDatosFichaTecnica</span>
         <br />
         <label>Fecha:</label>
-        <span>@Model.FechaInicio?.ToString("dd/MM/yyyy")</span>
+        <span>@(Model.FechaInicio?.ToString("dd/MM/yyyy"))</span>
     </div>
 </div>
 
@@ -28,25 +28,25 @@
                 <div class="row border-bottom">
                     <div class="col border-end">
                         <label class="control-label">Nombre:</label>
-                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Nombre</span>
+                        @(Model.RecepcionEquipo?.IdClienteNavigation?.Nombre ?? "No data")
                     </div>
                     <div class="col border-end">
                         <label class="control-label">Apellido:</label>
-                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Apellido</span>
+                        @(Model.RecepcionEquipo?.IdClienteNavigation != null ? Model.RecepcionEquipo.IdClienteNavigation.Apellido : "No data")
                     </div>
                     <div class="col">
                         <label class="control-label">Celular:</label>
-                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Telefono</span>
+                        @(Model.RecepcionEquipo?.IdClienteNavigation != null ? Model.RecepcionEquipo.IdClienteNavigation.Telefono : "No data")
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-8 border-end">
                         <label class="control-label">Correo:</label>
-                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Correo</span>
+                        @(Model.RecepcionEquipo?.IdClienteNavigation != null ? Model.RecepcionEquipo.IdClienteNavigation.Correo : "No data")
                     </div>
                     <div class="col">
                         <label class="control-label">Dirección:</label>
-                        <span>@Model.RecepcionEquipo.IdClienteNavigation.Direccion</span>
+                        @(Model.RecepcionEquipo?.IdClienteNavigation != null ? Model.RecepcionEquipo.IdClienteNavigation.Direccion : "No data")
                     </div>
                 </div>
             </div>

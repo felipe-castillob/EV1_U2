@@ -13,9 +13,9 @@ namespace MercDevs_ej2.Controllers
 {
     public class RecepcionequipoesController : Controller
     {
-        private readonly MercydevsEjercicio2Context _context;
+        private readonly MercyDeveloperContext _context;
 
-        public RecepcionequipoesController(MercydevsEjercicio2Context context)
+        public RecepcionequipoesController(MercyDeveloperContext context)
         {
             _context = context;
         }

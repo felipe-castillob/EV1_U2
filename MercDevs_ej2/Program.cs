@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 // coneccion a la bdd
-builder.Services.AddDbContext <MercydevsEjercicio2Context>(options => 
+builder.Services.AddDbContext <MercyDeveloperContext>(options => 
 options.UseMySql(builder.Configuration.GetConnectionString("connection"),
 Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.25-mariadb")));
 //end bdd

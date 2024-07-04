@@ -19,10 +19,19 @@ namespace MercDevs_ej2.Controllers
         }
 
         // GET: Datosfichatecnicas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var mercyDeveloperContext = _context.Datosfichatecnicas.Include(d => d.RecepcionEquipo);
-            return View(await mercyDeveloperContext.ToListAsync());
+            var fichaTecnica = await _context.Datosfichatecnicas
+                .Include(d => d.RecepcionEquipo)
+                .Include(d => d.RecepcionEquipo.IdClienteNavigation)
+                .FirstOrDefaultAsync(d => d.RecepcionEquipoId == id);
+
+            if (fichaTecnica == null)
+            {
+                return NotFound();
+            }
+
+            return View(fichaTecnica);
         }
 
         // GET: Datosfichatecnicas/Details/5
