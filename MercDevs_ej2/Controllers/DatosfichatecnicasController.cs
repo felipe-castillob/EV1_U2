@@ -71,7 +71,7 @@ namespace MercDevs_ej2.Controllers
             {
                 _context.Add(datosfichatecnica);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Recepcionequipoes");
             }
             ViewData["RecepcionEquipoId"] = new SelectList(_context.Recepcionequipos, "Id", "Id", datosfichatecnica.RecepcionEquipoId);
             return View(datosfichatecnica);
