@@ -28,7 +28,7 @@ namespace MercDevs_ej2.Controllers
 
             if (fichaTecnica == null)
             {
-                return NotFound();
+                return RedirectToAction("Create", new { id });
             }
 
             return View(fichaTecnica);
@@ -67,7 +67,7 @@ namespace MercDevs_ej2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdDatosFichaTecnica,FechaInicio,FechaFinalizacion,PobservacionesRecomendaciones,Soinstalado,SuiteOfficeInstalada,LectorPdfinstalado,NavegadorWebInstalado,AntivirusInstalado,RecepcionEquipoId")] Datosfichatecnica datosfichatecnica)
         {
-            if (ModelState.IsValid)
+            if (datosfichatecnica.IdDatosFichaTecnica != null)
             {
                 _context.Add(datosfichatecnica);
                 await _context.SaveChangesAsync();
