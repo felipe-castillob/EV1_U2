@@ -136,4 +136,7 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id"><button class="btn btn-warning">editar</button></a>
     <a asp-action="Index"><button class="btn btn-secondary">volver a listado</button></a>
+    <form method="post" asp-action="Finalizar" asp-route-id="@Model?.Id">
+        <button type="submit" class="btn btn-info">Finalizar Recepción</button>
+    </form>
 </div>
