@@ -23,6 +23,7 @@ namespace MercDevs_ej2.Controllers
         {
             var fichaTecnica = await _context.Datosfichatecnicas
                 .Include(d => d.RecepcionEquipo)
+                .Include(d => d.Diagnosticosolucions)
                 .Include(d => d.RecepcionEquipo.IdClienteNavigation)
                 .FirstOrDefaultAsync(d => d.RecepcionEquipoId == id);
 

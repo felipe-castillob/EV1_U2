@@ -325,7 +325,17 @@
         </tr>
         <tr>
             <th class="border-end">1</th>
-            <th class="border-end"></th>
+            @if (Model.Diagnosticosolucions == null || !Model.Diagnosticosolucions.Any())
+            {
+                <th class="border-end">No hay diagnostico disponible</th>
+            }
+            else
+            {
+                foreach (var diagnostico in Model.Diagnosticosolucions)
+                {
+                    <th class="border-end">@diagnostico.DescripcionDiagnostico</th>
+                }
+            }
             <th class="border-end"></th>
         </tr>
         <tr>
@@ -360,7 +370,17 @@
         </tr>
         <tr>
             <th class="border-end">1</th>
-            <th class="border-end"></th>
+            @if (Model.Diagnosticosolucions == null || !Model.Diagnosticosolucions.Any())
+            {
+                <th class="border-end">No hay solucion disponible</th>
+            }
+            else
+            {
+                foreach (var diagnostico in Model.Diagnosticosolucions)
+                {
+                    <th class="border-end">@diagnostico.DescripcionSolucion</th>
+                }
+            }
             <th class="border-end"></th>
         </tr>
         <tr>
