@@ -158,6 +158,7 @@ public partial class MercyDeveloperContext : DbContext
             entity.Property(e => e.Accesorio).HasMaxLength(45);
             entity.Property(e => e.CapacidadAlmacenamiento).HasMaxLength(45);
             entity.Property(e => e.CapacidadRam).HasColumnType("int(11)");
+            entity.Property(e => e.Estado).HasMaxLength(45);
             entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Grafico).HasMaxLength(45);
             entity.Property(e => e.IdCliente).HasColumnType("int(11)");

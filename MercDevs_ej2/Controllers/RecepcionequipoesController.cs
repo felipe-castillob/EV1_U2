@@ -255,7 +255,7 @@ namespace MercDevs_ej2.Controllers
         }
 
         // POST: Recepcionequipoes/Finalizar/5
-        /*[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Finalizar(int id)
         {
@@ -265,7 +265,7 @@ namespace MercDevs_ej2.Controllers
                 return NotFound();
             }
 
-            recepcionEquipo.Estado = "finalizar";
+            recepcionEquipo.Estado = "Finalizar";
 
             try
             {
@@ -285,7 +285,7 @@ namespace MercDevs_ej2.Controllers
             }
 
             return RedirectToAction(nameof(Index));
-        }*/
+        }
 
     }
 }
