@@ -25,6 +25,26 @@ namespace MercDevs_ej2.Controllers
             return View(await mercydevsEjercicio2Context.ToListAsync());
         }
 
+        // GET: Servicios/Verdescripcion/5
+        public async Task<IActionResult> Verdescripcion(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var verdescripcion = await _context.Servicios
+                .Include(r => r.Descripcionservicios)
+                .Include(s => s.UsuarioIdUsuarioNavigation)
+                .FirstOrDefaultAsync(m => m.IdServicio == id);
+            if (verdescripcion == null)
+            {
+                return NotFound();
+            }
+
+            return View(verdescripcion);
+        }
+
         // GET: Servicios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -97,7 +117,7 @@ namespace MercDevs_ej2.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (servicio.Nombre != null)
             {
                 try
                 {
