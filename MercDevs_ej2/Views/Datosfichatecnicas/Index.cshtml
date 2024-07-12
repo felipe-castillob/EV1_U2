@@ -89,10 +89,28 @@
                 <div class="row border-bottom">
                     <div class="col border-end">
                         <label class="control-label">Tipo:</label>
-                        <span>@Model.RecepcionEquipo.TipoPc</span>
+                        <span>
+                            @{
+                                string TipoPc = "";
+                                switch (Model.RecepcionEquipo.TipoPc)
+                                {
+                                    case 0:
+                                        TipoPc = "PC Torre";
+                                        break;
+                                    case 1:
+                                        TipoPc = "Notebook";
+                                        break;
+                                    case 2:
+                                        TipoPc = "All in One";
+                                        break;
+                                }
+                                @TipoPc;
+                            } 
+                        </span>
                     </div>
                     <div class="col border-end">
-                        <label class="control-label">Accesorios:</label>
+                        <label class="control-label">Accesorios:
+                                </label>
                         <span>@Model.RecepcionEquipo.Accesorio</span>
                     </div>
                 </div>
@@ -159,7 +177,25 @@
                 <div class="row border-bottom">
                     <div class="col border-end">
                         <label class="control-label">Sistema Operativo:</label>
-                        <span>@Model.Soinstalado</span>
+                        <span>
+                            @{
+                                string Soinstalado = "";
+                                switch (Model.Soinstalado)
+                                {
+                                    case 0:
+                                        Soinstalado = "Windows 10";
+                                        break;
+                                    case 1:
+                                        Soinstalado = "Windows 11";
+                                        break;
+                                    case 2:
+                                        Soinstalado = "Linux";
+                                        break;
+                                }
+                                @Soinstalado
+                                ;
+                            }
+                        </span>
                     </div>
                 </div>
                 <div class="row border-bottom">
