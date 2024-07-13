@@ -105,7 +105,9 @@
             <td>
 
                 <div class="d-flex justify-content-around" style="gap:10px">
+                    <button class="btn-secondary">
                     @Html.ActionLink("Ver Ficha Técnica", "Index", "Datosfichatecnicas", new { id = item.Id }, null)
+                    </button>
                     <a asp-action="Edit" asp-route-id="@item.Id">
                         <button type="button" class="btn btn-primary" style="width:100%">Editar</button></a>
 

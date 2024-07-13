@@ -7,19 +7,19 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Crear Diagnostico-Solucion</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DescripcionDiagnostico)
+                Descripcion Diagnostico
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescripcionSolucion)
+                Descripcion Solucion
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatosFichaTecnica)
+                Id Ficha Tecnica
             </th>
             <th></th>
         </tr>
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.DatosFichaTecnica.IdDatosFichaTecnica)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDiagnosticoSolucion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDiagnosticoSolucion">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDiagnosticoSolucion">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdDiagnosticoSolucion"><button type="button" class="btn btn-primary">Editar</button></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdDiagnosticoSolucion"><button type="button" class="btn btn-info">Detalles</button></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdDiagnosticoSolucion"><button type="button" class="btn btn-danger">Borrar</button></a>
             </td>
         </tr>
 }

@@ -18,6 +18,12 @@ namespace MercDevs_ej2.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Inicio()
+        {
+            var mercydevsEjercicio2Context = _context.Datosfichatecnicas.Include(d => d.RecepcionEquipo);
+            return View(await mercydevsEjercicio2Context.ToListAsync());
+        }
+
         // GET: Datosfichatecnicas
         public async Task<IActionResult> Index(int id)
         {
@@ -107,7 +113,7 @@ namespace MercDevs_ej2.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (datosfichatecnica.IdDatosFichaTecnica != null)
             {
                 try
                 {
@@ -125,7 +131,7 @@ namespace MercDevs_ej2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Inicio));
             }
             ViewData["RecepcionEquipoId"] = new SelectList(_context.Recepcionequipos, "Id", "Id", datosfichatecnica.RecepcionEquipoId);
             return View(datosfichatecnica);
