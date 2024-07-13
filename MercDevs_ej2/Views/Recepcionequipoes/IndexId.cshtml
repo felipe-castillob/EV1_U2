@@ -52,6 +52,9 @@
                 <th>
                     Servicio
                 </th>
+                <th>
+                    Estado
+                </th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -99,6 +102,9 @@
                         @Html.DisplayFor(modelItem => item.IdServicioNavigation.Nombre)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
 
                         <div class="d-flex justify-content-around" style="gap:10px">
                             <a asp-action="Edit" asp-route-id="@item.Id">
@@ -112,6 +118,9 @@
                             <a asp-action="Delete" asp-route-id="@item.Id">
                                 <button type="button" class="btn btn-danger" style="width:100%">Borrar</button>
                             </a>
+                            <form method="post" asp-action="Finalizar" asp-route-id="@item?.Id">
+                                <button type="submit" class="btn btn-warning">Finalizar Recepción</button>
+                            </form>
                         </div>
                     </td>
                 </tr>

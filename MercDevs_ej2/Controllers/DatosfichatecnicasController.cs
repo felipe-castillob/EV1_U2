@@ -41,6 +41,27 @@ namespace MercDevs_ej2.Controllers
             return View(fichaTecnica);
         }
 
+        // GET: Datosfichatecnicas/Diagnosticosolucionpordatosficha/5
+        public async Task<IActionResult> Diagnosticosolucionpordatosficha(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var verdiagnostico = await _context.Datosfichatecnicas
+                .Include(r => r.Diagnosticosolucions)
+                .Include(r => r.RecepcionEquipo)
+                .Include(d => d.RecepcionEquipo.IdClienteNavigation)
+                .FirstOrDefaultAsync(m => m.IdDatosFichaTecnica == id);
+            if (verdiagnostico == null)
+            {
+                return NotFound();
+            }
+
+            return View(verdiagnostico);
+        }
+
         // GET: Datosfichatecnicas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -54,6 +54,12 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdServicio"><button class="btn btn-warning">editar</button></a> |
+    <a asp-action="Edit" asp-route-id="@Model?.IdServicio"><button class="btn btn-warning">editar servicio</button></a>
+    <button class="btn-secondary">
+        @Html.ActionLink("Editar Descripcion Servicio", "Edit", "Descripcionservicios", new { id = Model.IdServicio }, null)
+    </button>|
+    @*Con la misma estructura del boton de arriba "ej: Borrar Descripcion Servicio", "Ruta ej= Delete", "Controlador ej: Descripcionservicios"
+    Asi mismo se puede llamar a otros metodos del controlador
+    *@
     <a asp-action="Index"><button class="btn btn-secondary">volver a listado</button></a>
 </div>

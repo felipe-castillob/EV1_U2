@@ -13,6 +13,9 @@
     <thead td style="white-space: nowrap;">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
@@ -60,6 +63,9 @@
     <tbody style="text-align">
 @foreach (var item in Model) {
         <tr>
+            <td style="white-space: nowrap;">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td style="white-space: nowrap;">
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
@@ -117,6 +123,9 @@
                     <a asp-action="Delete" asp-route-id="@item.Id">
                             <button type="button" class="btn btn-danger" style="width:100%">Borrar</button>
                     </a>
+                            <form method="post" asp-action="Finalizar" asp-route-id="@item?.Id">
+                                <button type="submit" class="btn btn-warning">Finalizar Recepción</button>
+                            </form>
                     </div>
             </td>
         </tr>
